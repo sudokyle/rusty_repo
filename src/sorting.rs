@@ -16,8 +16,8 @@ fn inner_merge_sort(a: &mut Vec<i32>, start: usize, end: usize) {
 /// The sub lists are then merged into a.
 fn merge(a: &mut Vec<i32>, start: usize, middle: usize, end: usize) {
     // todo: copy start - middle (slicing would just be a reference and we need to maintain order, so copy)
-    let mut left = a[start..=middle].to_vec();
-    let mut right = a[(middle+1)..=end].to_vec();
+    let left = a[start..=middle].to_vec();
+    let right = a[(middle+1)..=end].to_vec();
 
     let mut i = 0;
     let mut j = 0;
