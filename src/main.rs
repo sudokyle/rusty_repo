@@ -1,7 +1,9 @@
+use crate::lexer::{Lexer, TokenType};
 use crate::reference_binary_tree::BinaryTree;
 
 mod sorting;
 mod reference_binary_tree;
+mod lexer;
 
 
 fn main() {
@@ -24,4 +26,21 @@ fn main() {
     println!("Unsorted: {:?}", unordered_list);
     sorting::merge_sort(&mut unordered_list);
     println!("Sorted: {:?}", unordered_list);
+
+    println!("Reading in program file...");
+    match std::fs::read_to_string("code.txt") {
+        Ok(data) => {
+            println!("File read.");
+            let mut lexer = Lexer::new(&data);
+            let mut x = lexer.get_token();
+            println!("Reading in program file tokens...");
+            println!("{:?}", x);
+            while x.token_type != TokenType::EndOfFile && x.token_type != TokenType::ERROR {
+                x = lexer.get_token();
+                println!("{:?}", x);
+            }
+            println!("Program file tokens read.");
+        }
+        Err(_) => println!("Failed to read in code file."),
+    }
 }

@@ -1,0 +1,8 @@
+main() {
+    if ( 5 < 6 ) {
+        kyle = 10;
+        ferguson = kyle * 5;
+        print ferguson
+    }
+    print 0
+}
